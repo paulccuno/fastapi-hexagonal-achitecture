@@ -1,0 +1,5 @@
+FROM postgres:14.3-alpine
+WORKDIR /db
+
+RUN apk add build-base
+EXPOSE 5432

@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  database:
+    ports:
+      - "5432:5432"
+    restart: always
+    env_file:
+      - src/config/.env.local
+    build:
+      context: .
+      dockerfile: Dockerfile-db
+  app_fastapi:
+    volumes:
+      - .:/app
+    ports:
+      - "11804:11804"
+    env_file:
+      - src/config/.env.local
+    build:
+      context: .
+      dockerfile: Dockerfile.local
